@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck6vogsvgveqd"]
+
+[ext_resource type="Texture2D" uid="uid://bcbtk32e1eon4" path="res://Assets/Nico Sketch.PNG" id="1_uygvd"]
+[ext_resource type="Script" path="res://Scripts/Nico/Movement.gd" id="1_wdktk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2d76"]
+radius = 13.0
+height = 98.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_wdktk")
+friction = 700
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_d2d76")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, 0)
+scale = Vector2(0.165158, 0.165158)
+texture = ExtResource("1_uygvd")
