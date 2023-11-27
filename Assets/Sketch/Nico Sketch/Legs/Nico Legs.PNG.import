@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Nico Sketch.PNG-bb02c1690ae86f41be6c8881ad86e2eb.stex"
+path="res://.import/Nico Legs.PNG-f14f84618e2bf6127790b74d0e6532e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Nico Sketch.PNG"
-dest_files=[ "res://.import/Nico Sketch.PNG-bb02c1690ae86f41be6c8881ad86e2eb.stex" ]
+source_file="res://Assets/Sketch/Nico Sketch/Legs/Nico Legs.PNG"
+dest_files=[ "res://.import/Nico Legs.PNG-f14f84618e2bf6127790b74d0e6532e2.stex" ]
 
 [params]
 

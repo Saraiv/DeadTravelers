@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Nico Sketch.PNG-bb02c1690ae86f41be6c8881ad86e2eb.stex"
+path="res://.import/Nico Bones.PNG-7a7ce172fd338f64bdda886d2cc4a489.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Nico Sketch.PNG"
-dest_files=[ "res://.import/Nico Sketch.PNG-bb02c1690ae86f41be6c8881ad86e2eb.stex" ]
+source_file="res://Assets/Sketch/Nico Sketch/Bones/Nico Bones.PNG"
+dest_files=[ "res://.import/Nico Bones.PNG-7a7ce172fd338f64bdda886d2cc4a489.stex" ]
 
 [params]
 
