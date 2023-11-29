@@ -1,29 +1,39 @@
-extends CharacterBody2D
+extends KinematicBody2D
 
-@export var speed = 400
-@export var accel = 1500
-@export var friction = 600
+export(int) var speed = 80
+export(int) var run_speed = 90
+var animationPlayer = null
+var animationTree = null
+var animationState = null
 
-var input = Vector2.ZERO
+func _ready():
+	animationPlayer = $AnimationPlayer
+	animationTree = $AnimationTree
+	animationState = animationTree.get("parameters/playback") 
+	animationTree.active = true
 
 func _physics_process(delta):
-	player_movement(delta)
+	var velocity = Vector2.ZERO
 
-func get_input():
-	input.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	input.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	return input.normalized()
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1.0
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1.0
 
-func player_movement(delta):
-	input = get_input()
-	
-	if input == Vector2.ZERO:
-		if velocity.length() > (friction * delta):
-			velocity -= velocity.normalized() * (friction * delta)
-		else:
-			velocity = Vector2.ZERO
+
+	velocity = velocity.normalized()
+
+	if velocity == Vector2.ZERO:
+		# Idle
+		animationState.travel("Idle")
+		velocity = Vector2.ZERO
 	else:
-		velocity += (input * accel * delta)
-		velocity = velocity.limit_length(speed)
+		# Walk
+		animationTree.set("parameters/Idle/blend_position", velocity)
+		animationTree.set("parameters/Walk/blend_position", velocity)
+		animationState.travel("Walk")
+
+	if Input.is_action_pressed("ui_run"):
+		move_and_slide(velocity * run_speed)
 	
-	move_and_slide()
+	move_and_slide(velocity * run_speed)
