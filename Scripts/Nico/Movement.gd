@@ -11,6 +11,7 @@ var scale_changed = false
 func _ready():
 	animationPlayer = $AnimationPlayer
 	animationTree = $AnimationTree
+	animationState = animationTree.get("parameters/playback") 
 	sprite = $Sprite
 
 func _physics_process(delta):
@@ -21,10 +22,20 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_left"):
 		velocity.x = -1.0
 
-	if(velocity.x > 0):
-		get_node(".").scale.x = scale.y * 1
-	elif(velocity.x < 0):
-		get_node(".").scale.x = scale.y * -1
+	if velocity == Vector2.ZERO:
+		# Idle
+		animationState.travel("Idle")
+		velocity = Vector2.ZERO
+	else:
+		# Walk
+		animationTree.set("parameters/Idle/blend_position", velocity)
+		animationTree.set("parameters/Walking/blend_position", velocity)
+		animationState.travel("Walking")
+
+		if velocity.x > 0:
+			get_node(".").scale.x = scale.y * 1
+		elif velocity.x < 0:
+			get_node(".").scale.x = scale.y * -1
 
 	position += velocity * delta
 
@@ -33,4 +44,4 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_run"):
 		move_and_slide(velocity * run_speed)
 	
-	move_and_slide(velocity * run_speed)
+	move_and_slide(velocity * speed)
