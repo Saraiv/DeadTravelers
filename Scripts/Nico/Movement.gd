@@ -11,7 +11,7 @@ var scale_changed = false
 func _ready():
 	animationPlayer = $AnimationPlayer
 	animationTree = $AnimationTree
-	animationState = animationTree.get("parameters/playback") 
+	animationState = animationTree.get("parameters/playback")
 	sprite = $Sprite
 
 func _physics_process(delta):

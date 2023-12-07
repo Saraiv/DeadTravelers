@@ -1138,7 +1138,7 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=7]
 
 [node name="Nico" type="KinematicBody2D"]
-position = Vector2( 102, 466 )
+position = Vector2( 514, 417 )
 script = ExtResource( 2 )
 
 [node name="Polygons" type="Node2D" parent="."]
@@ -1297,3 +1297,7 @@ active = true
 parameters/playback = SubResource( 7 )
 parameters/Idle/blend_position = 0
 parameters/Walking/blend_position = 0
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2( -1, -115 )
+current = true
